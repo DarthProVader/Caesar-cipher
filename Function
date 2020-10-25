@@ -1,0 +1,32 @@
+import string
+askiL = string.ascii_lowercase
+askiU = string.ascii_uppercase
+
+message = input("Type in the words/sentence that you would like to have encoded: ")
+zakodovana_veta = []
+
+def prevod(el):
+    if el.isalpha() == True and el in askiL:
+        if askiL.index(el) + 13 <len(askiL):
+            prevedeny_index = askiL.index(el) + 13
+        else:
+            prevedeny_index = (askiL.index(el) + 13) - len(askiL)
+        vysledne_pismeno = list(askiL)[prevedeny_index]
+        return zakodovana_veta.append(vysledne_pismeno)
+    elif el.isalpha() == True and el in askiU:
+        if askiU.index(el) + 13 <len(askiU):
+            prevedeny_index = askiU.index(el) + 13
+        else:
+            prevedeny_index = (askiU.index(el) + 13) - len(askiU)
+        vysledne_pismeno = list(askiU)[prevedeny_index]
+        return zakodovana_veta.append(vysledne_pismeno)
+    else:
+        return zakodovana_veta.append(el)
+
+def sestav(text):
+    for element in message:
+        prevod(element)
+    zakodovana_vetaF = zakodovana_veta
+    return "".join(zakodovana_vetaF)
+    
+print(sestav(message))
